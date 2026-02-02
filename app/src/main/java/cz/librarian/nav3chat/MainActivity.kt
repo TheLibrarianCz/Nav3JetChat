@@ -12,37 +12,45 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import cz.librarian.nav3chat.ui.theme.Nav3ChatTheme
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
+import androidx.navigation3.runtime.NavEntry
+import androidx.navigation3.ui.NavDisplay
+import cz.librarian.nav3chat.theme.JetchatTheme
 
+data object ConversationList
+data class ConversationDetail(val id: String)
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Nav3ChatTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+            JetchatTheme {
+                val backstack = remember { mutableStateListOf<Any>(ConversationList) }
+
+                NavDisplay(
+                    backStack = backstack,
+                    onBack = { backstack.removeLastOrNull() },
+                    entryProvider = { key ->
+                        when (key) {
+                            is ConversationList -> {
+                                NavEntry(key) {
+
+                                }
+                            }
+
+                            is ConversationDetail -> {
+                                NavEntry(key) {
+
+                                }
+                            }
+
+                            else -> error("unknown key: $key")
+                        }
+                    }
+                )
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Nav3ChatTheme {
-        Greeting("Android")
     }
 }
