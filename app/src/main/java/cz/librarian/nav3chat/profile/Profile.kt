@@ -16,20 +16,30 @@
 
 package cz.librarian.nav3chat.profile
 
+import android.content.ClipDescription
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.draganddrop.dragAndDropTarget
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.exclude
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.ime
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
@@ -38,19 +48,26 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.ScaffoldDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draganddrop.mimeTypes
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
@@ -68,19 +85,90 @@ import cz.librarian.nav3chat.data.colleagueProfile
 import cz.librarian.nav3chat.data.meProfile
 import cz.librarian.nav3chat.theme.JetchatTheme
 import cz.librarian.nav3chat.FunctionalityNotAvailablePopup
+import cz.librarian.nav3chat.components.JetchatAppBar
+
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
+@Composable
+fun ProfileContent(
+    userData: ProfileScreenState,
+    modifier: Modifier = Modifier,
+    onNavIconPressed: () -> Unit = { },
+    nestedScrollInteropConnection: NestedScrollConnection = rememberNestedScrollInteropConnection(),
+) {
+
+    val scrollState = rememberScrollState()
+    val topBarState = rememberTopAppBarState()
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(topBarState)
+
+    val scope = rememberCoroutineScope()
+
+    var background by remember {
+        mutableStateOf(Color.Transparent)
+    }
+    var borderStroke by remember {
+        mutableStateOf(Color.Transparent)
+    }
+
+    var functionalityNotAvailablePopupShown by remember { mutableStateOf(false) }
+    if (functionalityNotAvailablePopupShown) {
+        FunctionalityNotAvailablePopup { functionalityNotAvailablePopupShown = false }
+    }
+
+    Scaffold(
+        topBar = {
+            JetchatAppBar(
+                // Reset the minimum bounds that are passed to the root of a compose tree
+                modifier = Modifier.wrapContentSize(),
+                onNavIconPressed = onNavIconPressed,
+                title = { },
+                actions = {
+                    // More icon
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_more_vert),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier
+                            .clickable(onClick = {
+                                functionalityNotAvailablePopupShown = true
+                            })
+                            .padding(horizontal = 12.dp, vertical = 16.dp)
+                            .height(24.dp),
+                        contentDescription = stringResource(id = R.string.more_options),
+                    )
+                },
+                scrollBehavior = scrollBehavior,
+            )
+        },
+        contentWindowInsets = ScaffoldDefaults
+            .contentWindowInsets
+            .exclude(WindowInsets.navigationBars)
+            .exclude(WindowInsets.ime),
+        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+    ) { paddingValues ->
+        Column(
+            Modifier.fillMaxSize().padding(paddingValues)
+                .background(color = background)
+                .border(width = 2.dp, color = borderStroke),
+        ) {
+            ProfileScreen(
+                userData = meProfile,
+                nestedScrollInteropConnection = nestedScrollInteropConnection,
+                scrollState = scrollState,
+            )
+        }
+    }
+}
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
 fun ProfileScreen(
     userData: ProfileScreenState,
     nestedScrollInteropConnection: NestedScrollConnection = rememberNestedScrollInteropConnection(),
+    scrollState: ScrollState = rememberScrollState(),
 ) {
     var functionalityNotAvailablePopupShown by remember { mutableStateOf(false) }
     if (functionalityNotAvailablePopupShown) {
         FunctionalityNotAvailablePopup { functionalityNotAvailablePopupShown = false }
     }
-
-    val scrollState = rememberScrollState()
 
     BoxWithConstraints(
         modifier = Modifier

@@ -17,6 +17,7 @@ package cz.librarian.nav3chat.data
  */
 
 
+
 import cz.librarian.nav3chat.conversation.ConversationUiState
 import cz.librarian.nav3chat.conversation.Message
 import cz.librarian.nav3chat.data.EMOJIS.EMOJI_CLOUDS
@@ -26,6 +27,8 @@ import cz.librarian.nav3chat.data.EMOJIS.EMOJI_PINK_HEART
 import cz.librarian.nav3chat.data.EMOJIS.EMOJI_POINTS
 import cz.librarian.nav3chat.profile.ProfileScreenState
 import cz.librarian.nav3chat.R
+import cz.librarian.nav3chat.conversation.Channel
+import cz.librarian.nav3chat.conversation.ConversationsUiState
 
 val initialMessages = listOf(
     Message(
@@ -81,12 +84,29 @@ val initialMessages = listOf(
     ),
 )
 
+val initialChannels = listOf(
+    Channel(
+        name = "#dcLondon",
+        members = 42,
+        lastMessage = "Check it out!",
+    ),
+    Channel(
+        name = "#dcBrno",
+        members = 42,
+        lastMessage = "Check it out!",
+    ),
+)
+
 val unreadMessages = initialMessages.filter { it.author != "me" }
 
 val exampleUiState = ConversationUiState(
     initialMessages = initialMessages,
     channelName = "#composers",
     channelMembers = 42,
+)
+
+val exampleListUiState = ConversationsUiState(
+    channels = initialChannels,
 )
 
 /**
