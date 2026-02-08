@@ -14,6 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import cz.librarian.nav3chat.ui.theme.Nav3ChatTheme
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
 import cz.librarian.nav3chat.theme.JetchatTheme
@@ -41,28 +43,40 @@ class MainActivity : ComponentActivity() {
                     backStack = backstack,
                     onBack = { backstack.removeLastOrNull() },
                     entryProvider = entryProvider {
-                        entry<ChannelList> {
-                            ConversationsContent(
-                                uiState = exampleListUiState,
-                                navigateToChannel = { channel -> backstack.add(ConversationList(channel)) }
-                            )
-                        }
-                        entry<ConversationList> { key ->
-                            ConversationContent(
-                                uiState = exampleUiState, // Use key.id in the real case
-                                navigateToProfile = { backstack.add(key) },
-                                onNavIconPressed = { backstack.removeLastOrNull() },
-                            )
-                        }
-                        entry<Profile>  { key ->
-                            ProfileContent(
-                                userData = meProfile,
-                                onNavIconPressed = { backstack.removeLastOrNull() },
-                            )
-                        }
+                        conversationsContent(backstack)
+                        conversationContent(backstack)
+                        profileContent(backstack)
                     }
                 )
             }
         }
+    }
+}
+
+private fun EntryProviderScope<Any>.conversationsContent(backstack: SnapshotStateList<Any>) {
+    entry<ChannelList> {
+        ConversationsContent(
+            uiState = exampleListUiState,
+            navigateToChannel = { channel -> backstack.add(ConversationList(channel)) }
+        )
+    }
+}
+
+private fun EntryProviderScope<Any>.conversationContent(backstack: SnapshotStateList<Any>) {
+    entry<ConversationList> { key ->
+        ConversationContent(
+            uiState = exampleUiState, // Use key.id in the real case
+            navigateToProfile = { backstack.add(key) },
+            onNavIconPressed = { backstack.removeLastOrNull() },
+        )
+    }
+}
+
+private fun EntryProviderScope<Any>.profileContent(backstack: SnapshotStateList<Any>) {
+    entry<Profile>  { key ->
+        ProfileContent(
+            userData = meProfile,
+            onNavIconPressed = { backstack.removeLastOrNull() },
+        )
     }
 }
