@@ -25,4 +25,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Nav3Chat"
 include(":app")
- 
+include(":feature:conversation:api")
+include(":feature:conversation:impl")

@@ -16,6 +16,7 @@ lifecycle = "2.8.7"
 appcompat = "1.7.0"
 navigation = "2.8.5"
 navigation3Runtime = "1.0.0"
+material = "1.10.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -46,9 +47,11 @@ androidx-compose-ui-viewbinding = { group = "androidx.compose.ui", name = "ui-vi
 androidx-navigation-fragment-ktx = {group = "androidx.navigation",name = "navigation-fragment-ktx",version.ref = "navigation"}
 androidx-navigation-ui-ktx = {group = "androidx.navigation",name = "navigation-ui-ktx",version.ref = "navigation"}
 androidx-navigation3-runtime = { group = "androidx.navigation3", name = "navigation3-runtime", version.ref = "navigation3Runtime" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "agp" }
 
