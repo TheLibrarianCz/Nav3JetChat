@@ -14,8 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import cz.librarian.nav3chat.ui.theme.Nav3ChatTheme
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
-import androidx.navigation3.runtime.NavEntry
+import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
 import cz.librarian.nav3chat.theme.JetchatTheme
 import cz.librarian.nav3chat.conversation.ConversationsContent
@@ -27,7 +26,7 @@ import cz.librarian.nav3chat.profile.ProfileScreen
 import cz.librarian.nav3chat.theme.JetchatTheme
 
 data object ChannelList
-data class ConversationList(val id: String)
+data class ConversationList(val channel: String)
 data class Profile(val id: String)
 
 class MainActivity : ComponentActivity() {
@@ -41,37 +40,25 @@ class MainActivity : ComponentActivity() {
                 NavDisplay(
                     backStack = backstack,
                     onBack = { backstack.removeLastOrNull() },
-                    entryProvider = { key ->
-                        when (key) {
-                            is ChannelList -> {
-                                NavEntry(key) {
-                                    ConversationsContent(
-                                        uiState = exampleListUiState,
-                                        navigateToChannel = { backstack.add(ConversationList(it)) }
-                                    )
-                                }
-                            }
-
-                            is ConversationList -> {
-                                NavEntry(key) {
-                                    ConversationContent(
-                                        uiState = exampleUiState,
-                                        navigateToProfile = { backstack.add(meProfile) },
-                                        onNavIconPressed = { backstack.removeLastOrNull() },
-                                    )
-                                }
-                            }
-
-                            is Profile -> {
-                                NavEntry(key) {
-                                    ProfileContent(
-                                        userData = meProfile,
-                                        onNavIconPressed = { backstack.removeLastOrNull() },
-                                    )
-                                }
-                            }
-
-                            else -> error("unknown key: $key")
+                    entryProvider = entryProvider {
+                        entry<ChannelList> {
+                            ConversationsContent(
+                                uiState = exampleListUiState,
+                                navigateToChannel = { channel -> backstack.add(ConversationList(channel)) }
+                            )
+                        }
+                        entry<ConversationList> { key ->
+                            ConversationContent(
+                                uiState = exampleUiState, // Use key.id in the real case
+                                navigateToProfile = { backstack.add(key) },
+                                onNavIconPressed = { backstack.removeLastOrNull() },
+                            )
+                        }
+                        entry<Profile>  { key ->
+                            ProfileContent(
+                                userData = meProfile,
+                                onNavIconPressed = { backstack.removeLastOrNull() },
+                            )
                         }
                     }
                 )
