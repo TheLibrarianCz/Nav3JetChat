@@ -1,0 +1,113 @@
+package cz.librarian.conversation.impl.data
+
+import cz.librarian.conversation.impl.data.EMOJIS.EMOJI_CLOUDS
+import cz.librarian.conversation.impl.data.EMOJIS.EMOJI_FLAMINGO
+import cz.librarian.conversation.impl.data.EMOJIS.EMOJI_MELTING
+import cz.librarian.conversation.impl.data.EMOJIS.EMOJI_PINK_HEART
+import cz.librarian.conversation.impl.data.EMOJIS.EMOJI_POINTS
+import cz.librarian.ui.R
+
+
+<<<<<<<< HEAD:app/src/main/java/cz/librarian/nav3chat/data/FakeData.kt
+
+import cz.librarian.nav3chat.data.EMOJIS.EMOJI_CLOUDS
+import cz.librarian.nav3chat.data.EMOJIS.EMOJI_FLAMINGO
+import cz.librarian.nav3chat.data.EMOJIS.EMOJI_MELTING
+import cz.librarian.nav3chat.data.EMOJIS.EMOJI_PINK_HEART
+import cz.librarian.nav3chat.data.EMOJIS.EMOJI_POINTS
+import cz.librarian.nav3chat.R
+
+========
+object EMOJIS {
+    // EMOJI 15
+    const val EMOJI_PINK_HEART = "\uD83E\uDE77"
+>>>>>>>> 45b5d3a (Move everything into modules.):feature/conversation/impl/src/main/java/cz/librarian/conversation/impl/data/ConversationFakeData.kt
+
+    // EMOJI 14 🫠
+    const val EMOJI_MELTING = "\uD83E\uDEE0"
+
+    // ANDROID 13.1 😶‍🌫️
+    const val EMOJI_CLOUDS = "\uD83D\uDE36\u200D\uD83C\uDF2B️"
+
+    // ANDROID 12.0 🦩
+    const val EMOJI_FLAMINGO = "\uD83E\uDDA9"
+
+    // ANDROID 12.0  👉
+    const val EMOJI_POINTS = " \uD83D\uDC49"
+}
+val initialMessages = listOf(
+    Message(
+        "me",
+        "Check it out!",
+        "8:07 PM",
+    ),
+    Message(
+        "me",
+        "Thank you!$EMOJI_PINK_HEART",
+        "8:06 PM",
+        R.drawable.sticker,
+    ),
+    Message(
+        "Taylor Brooks",
+        "You can use all the same stuff",
+        "8:05 PM",
+    ),
+    Message(
+        "Taylor Brooks",
+        "@aliconors Take a look at the `Flow.collectAsStateWithLifecycle()` APIs",
+        "8:05 PM",
+    ),
+    Message(
+        "John Glenn",
+        "Compose newbie as well $EMOJI_FLAMINGO, have you looked at the JetNews sample? " +
+                "Most blog posts end up out of date pretty fast but this sample is always up to " +
+                "date and deals with async data loading (it's faked but the same idea " +
+                "applies) $EMOJI_POINTS https://goo.gle/jetnews",
+        "8:04 PM",
+    ),
+    Message(
+        "me",
+        "Compose newbie: I’ve scourged the internet for tutorials about async data " +
+                "loading but haven’t found any good ones $EMOJI_MELTING $EMOJI_CLOUDS. " +
+                "What’s the recommended way to load async data and emit composable widgets?",
+        "8:03 PM",
+    ),
+    Message(
+        "Shangeeth Sivan",
+        "Does anyone know about Glance Widgets its the new way to build widgets in Android!",
+        "8:08 PM",
+    ),
+    Message(
+        "Taylor Brooks",
+        "Wow! I never knew about Glance Widgets when was this added to the android ecosystem",
+        "8:10 PM",
+    ),
+    Message(
+        "John Glenn",
+        "Yeah its seems to be pretty new!",
+        "8:12 PM",
+    ),
+)
+
+val exampleUiState = ConversationUiState(
+    initialMessages = initialMessages,
+    channelName = "#composers",
+    channelMembers = 42,
+)
+
+val initialChannels = listOf(
+    Channel(
+        name = "#dcLondon",
+        members = 42,
+        lastMessage = "Check it out!",
+    ),
+    Channel(
+        name = "#dcBrno",
+        members = 42,
+        lastMessage = "Check it out!",
+    ),
+)
+
+val exampleListUiState = ConversationsUiState(
+    channels = initialChannels,
+)

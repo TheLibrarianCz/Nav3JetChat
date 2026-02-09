@@ -27,3 +27,7 @@ rootProject.name = "Nav3Chat"
 include(":app")
 include(":feature:conversation:api")
 include(":feature:conversation:impl")
+include(":ui")
+include(":feature:profile:api")
+include(":feature:profile:impl")
+include(":core:state")

@@ -48,6 +48,14 @@ kotlin {
 }
 
 dependencies {
+    implementation(project(":feature:conversation:api"))
+    implementation(project(":feature:profile:api"))
+
+    implementation(project(":feature:conversation:impl"))
+    implementation(project(":feature:profile:impl"))
+    implementation(project(":ui"))
+    implementation(project(":core:state"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -70,6 +78,7 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.navigation3.runtime)
+    implementation(libs.androidx.compose.runtime)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

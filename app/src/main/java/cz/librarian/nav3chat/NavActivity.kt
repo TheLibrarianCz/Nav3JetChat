@@ -37,8 +37,9 @@ import androidx.core.view.ViewCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import cz.librarian.nav3chat.components.JetchatDrawer
 import cz.librarian.nav3chat.databinding.ContentMainBinding
+import cz.librarian.state.MainViewModel
+import cz.librarian.ui.components.JetchatDrawer
 import kotlinx.coroutines.launch
 
 /**
