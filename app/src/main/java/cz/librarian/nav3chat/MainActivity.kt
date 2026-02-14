@@ -13,8 +13,9 @@ import cz.librarian.conversation.impl.conversationContent
 import cz.librarian.conversation.impl.conversationsContent
 import cz.librarian.profile.impl.profileContent
 import cz.librarian.ui.theme.JetchatTheme
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
