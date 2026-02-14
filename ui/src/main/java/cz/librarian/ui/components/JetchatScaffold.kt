@@ -23,6 +23,7 @@ import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import cz.librarian.ui.theme.JetchatTheme
 
 @Composable
 fun JetchatDrawer(

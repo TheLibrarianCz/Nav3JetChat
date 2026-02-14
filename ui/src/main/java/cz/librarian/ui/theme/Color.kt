@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package cz.librarian.nav3chat.theme
+package cz.librarian.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

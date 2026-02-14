@@ -31,11 +31,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-<<<<<<<< HEAD:app/src/main/java/cz/librarian/nav3chat/conversation/JumpToBottom.kt
-import cz.librarian.nav3chat.R
-========
 import cz.librarian.ui.R
->>>>>>>> 45b5d3a (Move everything into modules.):feature/conversation/impl/src/main/java/cz/librarian/conversation/impl/ui/JumpToBottom.kt
 
 private enum class Visibility {
     VISIBLE,

@@ -35,11 +35,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-<<<<<<<< HEAD:app/src/main/java/cz/librarian/nav3chat/conversation/RecordButton.kt
-import cz.librarian.nav3chat.R
-========
 import cz.librarian.ui.R
->>>>>>>> 45b5d3a (Move everything into modules.):feature/conversation/impl/src/main/java/cz/librarian/conversation/impl/ui/RecordButton.kt
 import kotlin.math.abs
 import kotlinx.coroutines.launch
 

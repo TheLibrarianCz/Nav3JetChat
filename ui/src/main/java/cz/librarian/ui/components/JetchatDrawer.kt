@@ -48,6 +48,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import cz.librarian.ui.R
+import cz.librarian.ui.theme.JetchatTheme
 
 @Composable
 fun JetchatDrawerContent(onProfileClicked: (String) -> Unit, onChatClicked: (String) -> Unit, selectedMenu: String = "composers") {

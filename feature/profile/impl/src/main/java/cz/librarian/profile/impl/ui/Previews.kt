@@ -20,6 +20,7 @@ import cz.librarian.profile.impl.data.colleagueProfile
 import cz.librarian.profile.impl.data.meProfile
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import cz.librarian.ui.theme.JetchatTheme
 
 @Preview(widthDp = 340, name = "340 width - Me")
 @Composable

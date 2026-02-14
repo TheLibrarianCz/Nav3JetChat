@@ -86,7 +86,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import cz.librarian.conversation.impl.data.exampleUiState
+import cz.librarian.ui.FunctionalityNotAvailablePopup
 import cz.librarian.ui.R
+import cz.librarian.ui.components.JetchatAppBar
+import cz.librarian.ui.theme.JetchatTheme
 import kotlinx.coroutines.launch
 
 /**

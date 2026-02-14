@@ -77,7 +77,12 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import cz.librarian.profile.impl.data.colleagueProfile
 import cz.librarian.profile.impl.data.meProfile
+import cz.librarian.ui.FunctionalityNotAvailablePopup
 import cz.librarian.ui.R
+import cz.librarian.ui.components.AnimatingFabContent
+import cz.librarian.ui.components.JetchatAppBar
+import cz.librarian.ui.components.baselineHeight
+import cz.librarian.ui.theme.JetchatTheme
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable

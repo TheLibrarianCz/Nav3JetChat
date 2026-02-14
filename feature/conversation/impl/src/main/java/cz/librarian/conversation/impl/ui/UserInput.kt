@@ -87,11 +87,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-<<<<<<<< HEAD:app/src/main/java/cz/librarian/nav3chat/conversation/UserInput.kt
-import cz.librarian.nav3chat.R
-========
+import cz.librarian.ui.FunctionalityNotAvailablePopup
 import cz.librarian.ui.R
->>>>>>>> 45b5d3a (Move everything into modules.):feature/conversation/impl/src/main/java/cz/librarian/conversation/impl/ui/UserInput.kt
 import kotlin.math.absoluteValue
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds

@@ -5,23 +5,16 @@ import cz.librarian.conversation.impl.data.EMOJIS.EMOJI_FLAMINGO
 import cz.librarian.conversation.impl.data.EMOJIS.EMOJI_MELTING
 import cz.librarian.conversation.impl.data.EMOJIS.EMOJI_PINK_HEART
 import cz.librarian.conversation.impl.data.EMOJIS.EMOJI_POINTS
+import cz.librarian.conversation.impl.ui.Message
+import cz.librarian.conversation.impl.ui.ConversationUiState
+import cz.librarian.conversation.impl.ui.Channel
+import cz.librarian.conversation.impl.ui.ConversationsUiState
 import cz.librarian.ui.R
 
 
-<<<<<<<< HEAD:app/src/main/java/cz/librarian/nav3chat/data/FakeData.kt
-
-import cz.librarian.nav3chat.data.EMOJIS.EMOJI_CLOUDS
-import cz.librarian.nav3chat.data.EMOJIS.EMOJI_FLAMINGO
-import cz.librarian.nav3chat.data.EMOJIS.EMOJI_MELTING
-import cz.librarian.nav3chat.data.EMOJIS.EMOJI_PINK_HEART
-import cz.librarian.nav3chat.data.EMOJIS.EMOJI_POINTS
-import cz.librarian.nav3chat.R
-
-========
 object EMOJIS {
     // EMOJI 15
     const val EMOJI_PINK_HEART = "\uD83E\uDE77"
->>>>>>>> 45b5d3a (Move everything into modules.):feature/conversation/impl/src/main/java/cz/librarian/conversation/impl/data/ConversationFakeData.kt
 
     // EMOJI 14 🫠
     const val EMOJI_MELTING = "\uD83E\uDEE0"

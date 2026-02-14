@@ -41,13 +41,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-<<<<<<<< HEAD:app/src/main/java/cz/librarian/nav3chat/conversation/ConversationList.kt
-import cz.librarian.nav3chat.R
-
-========
+import cz.librarian.ui.FunctionalityNotAvailablePopup
 import cz.librarian.ui.R
-
->>>>>>>> 45b5d3a (Move everything into modules.):feature/conversation/impl/src/main/java/cz/librarian/conversation/impl/ui/ConversationList.kt
+import cz.librarian.ui.components.JetchatAppBar
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
