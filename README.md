@@ -1,0 +1,173 @@
+# 📱 Jetchat Nav3 Multi-Module Sample
+
+This project demonstrates how to use **Jetpack Navigation 3** together with a **multi-module architecture** in a real-world Jetpack Compose app.
+
+It is heavily based on the official **Jetchat** sample from Google and reuses a significant portion of its open-source code (Apache 2.0).
+
+🔗 Original Jetchat sample:  
+[https://github.com/android/compose-samples/tree/main/Jetchat](https://github.com/android/compose-samples/tree/main/Jetchat)
+
+🎤 Inspired by the talk:  
+**“Navigating the future with Jetpack Navigation 3” – Don Turner (droidcon London 2025)**  
+[https://www.youtube.com/watch?v=j1Oi900LEjI](https://www.youtube.com/watch?v=j1Oi900LEjI)
+
+----------
+
+## ✨ Purpose
+
+The goal of this repository is to:
+
+-   Showcase **Jetpack Navigation 3**
+    
+-   Demonstrate **modularization in a Compose app**
+
+    
+----------
+
+## 🧱 Architecture
+
+### Multi-module setup
+
+The project is split into independent modules to:
+
+-   Improve build times
+    
+-   Enable feature isolation
+    
+-   Support scalability
+    
+-   Allow clearer ownership boundaries
+
+Feature modules are using both API/Implementation and layer architecture - I am not guaranteing that it is the proper way but this repo served as a Gradle playground so I decided to go with it
+
+The submodule structure looks like this:
+ - feature:profile:api
+ - feature:profile:impl:ui
+ - feature:profile:impl:domain
+ - feature:profile:impl:data
+ 
+    
+
+Example module responsibilities:
+
+-   `core` → shared utilities, design system, common models
+    
+-   `feature:conversation` → conversation screen
+    
+-   `feature:profile` → profile UI
+    
+-   `app` → application entry point
+
+-   `ui`  → Android resources related stuff (mainly just so submodules have something to depend on that isn't `:app`
+    
+
+### Navigation 3
+
+This project uses **Jetpack Navigation 3** to:
+
+-   Define type-safe destinations
+    
+-   Support modular navigation graphs
+    
+-   Enable better separation between features
+    
+
+The implementation follows the concepts presented in the droidcon session.
+
+----------
+
+## 🧩 What comes from Jetchat
+
+A large portion of the following is taken or adapted from the original sample:
+
+-   UI components
+    
+-   ViewModels & state holders
+    
+-   Data models & fake repositories
+    
+-   Theming and design
+    
+-   Message input & conversation layout
+    
+
+This is possible thanks to the **Apache 2.0 license**.
+
+----------
+
+## 🚀 Why this project exists
+
+There is currently no official sample that:
+
+✅ Uses **Navigation 3**  
+✅ Is **multi-module**  
+✅ Unofficial sample for the **droidcon** talk 
+
+This repo fills that gap.
+
+----------
+
+## 🛠 Tech stack
+
+- Android Gradle plugin 9.1.0
+
+-   Kotlin
+    
+-   Jetpack Compose
+    
+-   Jetpack Navigation 3
+    
+-   ViewModel
+    
+-   StateFlow
+    
+-   Material 3
+    
+-   Multi-module Gradle setup
+    
+
+----------
+
+## 📚 Learn more
+
+-   Jetchat sample (official):  
+    [https://github.com/android/compose-samples/tree/main/Jetchat](https://github.com/android/compose-samples/tree/main/Jetchat)
+    
+-   Droidcon talk:  
+    [https://www.youtube.com/watch?v=j1Oi900LEjI](https://www.youtube.com/watch?v=j1Oi900LEjI)
+    
+
+----------
+
+## 🙏 Credits
+
+-   Google — for the Jetchat sample
+    
+-   Don Turner — for the Navigation 3 architecture guidance
+    
+
+----------
+
+## 📄 License
+
+This project contains code from the original **Jetchat** sample and therefore complies with the **Apache 2.0 License**.
+
+----------
+
+# ⭐ Suggested optional sections (tell me if you want them)
+
+I can extend this with:
+
+-   📸 Screenshots / GIF section
+    
+-   🧭 Detailed navigation diagram
+    
+-   🏗 Module dependency graph
+    
+-   🔄 “Migration from Nav2 → Nav3” explanation
+    
+-   🧪 Testing strategy
+    
+-   📦 Version catalog / build logic notes
+    
+-   🤝 Contribution guide
